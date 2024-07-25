@@ -12,26 +12,31 @@ public enum PlayerDirection
 public class PlayerMovement : MonoBehaviour
 {
     Transform player;
-    public float playerSpeed = 5f;
     Rigidbody2D rb;
+    PlayerInteractionHandler intHandler;
 
+    public float playerSpeed = 5f;
     [SerializeField] Transform playerBody;
     [SerializeField] CameraMovement cam;
 
-    public PlayerDirection walkDirection = PlayerDirection.none;
+    [HideInInspector] public PlayerDirection walkDirection = PlayerDirection.none;
     [HideInInspector] public bool interacting;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Transform>();
+        intHandler = GetComponent<PlayerInteractionHandler>();
     }
 
     void Update()
     {
         PlayerInputCheck();
         MovePlayer();
+        PlayerInteraction();
     }
 
     void PlayerInputCheck()
@@ -80,5 +85,10 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
     }
 
-
+    private void PlayerInteraction()
+    {
+        if (interacting && intHandler.isInteracting)
+            intHandler.PlayerIsInteracting();
+        interacting = false;
+    }
 }
