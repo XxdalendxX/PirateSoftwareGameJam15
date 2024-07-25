@@ -23,4 +23,10 @@ public class PlayerInteractionHandler : MonoBehaviour
     {
         interactingObject.InteractionAction();
     }
+
+    public void DeleteObject()
+    {
+        
+    }
+
 }
