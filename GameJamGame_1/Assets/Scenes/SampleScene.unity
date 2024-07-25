@@ -545,7 +545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4833350757425139850, guid: b6e42c571fb5e1c44b28e568997a44cc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5236101684520737735, guid: b6e42c571fb5e1c44b28e568997a44cc, type: 3}
       propertyPath: m_text
@@ -1190,6 +1190,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 529406604}
     m_Modifications:
+    - target: {fileID: 2920606372382628806, guid: 2f24441bda9edce48b9300f4a4908cfa, type: 3}
+      propertyPath: exitPrompt
+      value: 
+      objectReference: {fileID: 709792612}
     - target: {fileID: 2920606372382628856, guid: 2f24441bda9edce48b9300f4a4908cfa, type: 3}
       propertyPath: m_Name
       value: Van
