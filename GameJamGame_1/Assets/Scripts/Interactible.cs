@@ -6,7 +6,7 @@ public class Interactible : MonoBehaviour
 {
     [SerializeField] GameObject interactionPrompt;
     Transform interactionPromptObject;
-    PlayerInteractionHandler interactionHandler;
+    protected PlayerInteractionHandler interactionHandler;
 
     #region TriggerInteraction
     private void OnTriggerEnter2D(Collider2D collidingObject)
@@ -17,10 +17,7 @@ public class Interactible : MonoBehaviour
 
             if (!interactionHandler.isInteracting)
             {
-                interactionPromptObject = Instantiate(interactionPrompt).transform;
-                interactionPromptObject.position = new Vector3(transform.position.x, interactionHandler.transform.position.y, transform.position.z);
-                interactionHandler = collidingObject.GetComponent<PlayerInteractionHandler>();
-                interactionHandler.EnterInteraction(this);
+                PlayerIsInteracting(collidingObject);
             }
         }
     }
@@ -29,31 +26,45 @@ public class Interactible : MonoBehaviour
     {
         if (collidingObject.gameObject.tag == "Player")
         {
-            interactionHandler = collidingObject.GetComponent<PlayerInteractionHandler>();
-
             if (!interactionHandler.isInteracting)
             {
-                interactionPromptObject = Instantiate(interactionPrompt).transform;
-                interactionPromptObject.position = new Vector3(transform.position.x, interactionHandler.transform.position.y, transform.position.z);
-                interactionHandler = collidingObject.GetComponent<PlayerInteractionHandler>();
-                interactionHandler.EnterInteraction(this);
+                PlayerIsInteracting(collidingObject);
             }
-            interactionHandler = null;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collidingObject)
     {
-        if (collidingObject.gameObject.tag == "Player" && interactionPromptObject != null)
+        if (collidingObject.gameObject.tag == "Player")
         {
-            interactionHandler = collidingObject.GetComponent<PlayerInteractionHandler>();
-
             interactionHandler.ExitInteraction();
-            Object.Destroy(interactionPromptObject.gameObject);
+            interactionHandler = null;
+
+            Object.Destroy(transform.GetChild(0).gameObject);
         }
-            
     }
     #endregion
 
+    private void Update()
+    {
+        if (interactionHandler == null && transform.childCount > 0)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Object.Destroy(transform.GetChild(i).gameObject);
+            }
+        }
+    }
+
     public virtual void InteractionAction() {}
+
+    private void PlayerIsInteracting(Collider2D collidingObject)
+    {
+        interactionPromptObject = Instantiate(interactionPrompt).transform;
+        interactionPromptObject.position = new Vector3(transform.position.x, interactionHandler.transform.position.y, transform.position.z - 0.01f);
+        interactionPromptObject.parent = transform;
+
+        interactionHandler = collidingObject.GetComponent<PlayerInteractionHandler>();
+        interactionHandler.EnterInteraction(this);
+    }
 }

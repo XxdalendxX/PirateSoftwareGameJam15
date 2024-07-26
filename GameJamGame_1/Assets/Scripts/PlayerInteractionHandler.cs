@@ -24,9 +24,9 @@ public class PlayerInteractionHandler : MonoBehaviour
         interactingObject.InteractionAction();
     }
 
-    public void DeleteObject()
+    public void DeletePickupObject(GameObject objectToDelete)
     {
-        
+        Object.Destroy(objectToDelete);
     }
 
 }

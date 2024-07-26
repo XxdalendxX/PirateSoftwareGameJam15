@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class ExitPrompt : MonoBehaviour
 {
+    [SerializeField] UIManager uiManager;
+
     public void Stay()
     {
         gameObject.SetActive(false);
+
+        uiManager.ToggleUI();
 
         //start Timer again
 
