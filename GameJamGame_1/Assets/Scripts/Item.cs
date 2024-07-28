@@ -21,9 +21,7 @@ public class Item : Interactible
 
     public override void InteractionAction()
     {
-        Debug.Log("Sikky is a motherfucking WOMPOM");
-
-        //increase weight
+        weightSystem.IncreaseWeight(weight);
 
         moneySystem.IncreaseCurrency(moneyValue);
 

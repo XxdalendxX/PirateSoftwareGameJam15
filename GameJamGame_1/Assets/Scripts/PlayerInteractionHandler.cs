@@ -7,6 +7,9 @@ public class PlayerInteractionHandler : MonoBehaviour
     [HideInInspector] public bool isInteracting = false;
     [HideInInspector] public Interactible interactingObject;
 
+    //[HideInInspector] 
+    public bool canMove = true;
+
     public void EnterInteraction(Interactible object_)
     {
         interactingObject = object_;
@@ -24,9 +27,22 @@ public class PlayerInteractionHandler : MonoBehaviour
         interactingObject.InteractionAction();
     }
 
+    public void PlayerIsDoingTheOtherInteraction()
+    {
+        interactingObject.SecondaryInteractionAction();
+    }
+
     public void DeletePickupObject(GameObject objectToDelete)
     {
         Object.Destroy(objectToDelete);
+    }
+
+    public void TogglePlayerInput()
+    {
+        if (canMove)
+            canMove = false;
+        else
+            canMove = true;
     }
 
 }

@@ -8,17 +8,23 @@ public class Van : Interactible
     [Header("Van Values")]
 
     [SerializeField] UIManager uIManager;
-
+    [SerializeField] WeightSystem weightSystem;
     [SerializeField] ExitPrompt exitPrompt;
-   public override void InteractionAction()
+
+
+    public override void InteractionAction()
     {
-        Debug.Log("LF likes licking feet");
+        weightSystem.ClearWeight();
+    }
+
+    public override void SecondaryInteractionAction()
+    {
         uIManager.ToggleUI();
 
         //Make Timer Stop
 
-        //Prevent Player Movement / interaction
-        
+        interactionHandler.TogglePlayerInput();
+
         exitPrompt.gameObject.SetActive(true);
     }
 }

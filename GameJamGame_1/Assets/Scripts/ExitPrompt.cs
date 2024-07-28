@@ -5,6 +5,7 @@ using UnityEngine;
 public class ExitPrompt : MonoBehaviour
 {
     [SerializeField] UIManager uiManager;
+    [SerializeField] PlayerInteractionHandler interactionHandler;
 
     public void Stay()
     {
@@ -14,7 +15,7 @@ public class ExitPrompt : MonoBehaviour
 
         //start Timer again
 
-        //allow player movement / interactions
+        interactionHandler.TogglePlayerInput();
     }
 
     public void Leave()

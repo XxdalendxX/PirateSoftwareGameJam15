@@ -15,11 +15,37 @@ public class UIManager : MonoBehaviour
     [SerializeField] Transform weightUI;
     [SerializeField] Transform timeUI;
 
-     public void UpdateMoney(int totalMoney) =>
+    [Header("Weight Colours")]
+    [SerializeField] Color lightWeightColour;
+    [SerializeField] Color moderateWeightColour;
+    [SerializeField] Color heavyWeightColour;
+    [SerializeField] Color encumberedWeightColour;
+
+    
+
+    public void UpdateMoney(int totalMoney) =>
         moneyText.text = totalMoney.ToString();
 
-    public void UpdateWeight(int totalWeight) =>
+    public void UpdateWeight(float totalWeight, WeightLevel weightLevel)
+    {
         weightText.text = totalWeight.ToString();
+
+        switch(weightLevel)
+        {
+            case WeightLevel.Light:
+                weightText.color = lightWeightColour;
+                break;
+            case WeightLevel.Moderate:
+                weightText.color = moderateWeightColour;
+                break;
+            case WeightLevel.Heavy:
+                weightText.color = heavyWeightColour;
+                break;
+            case WeightLevel.Encumbered:
+                weightText.color = encumberedWeightColour;
+                break;
+        }
+    }
 
     public void ToggleUI()
     {

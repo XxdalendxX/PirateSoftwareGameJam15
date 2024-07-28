@@ -58,6 +58,8 @@ public class Interactible : MonoBehaviour
 
     public virtual void InteractionAction() {}
 
+    public virtual void SecondaryInteractionAction() {}
+
     private void PlayerIsInteracting(Collider2D collidingObject)
     {
         interactionPromptObject = Instantiate(interactionPrompt).transform;

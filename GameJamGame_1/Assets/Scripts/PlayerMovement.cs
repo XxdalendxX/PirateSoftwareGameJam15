@@ -11,32 +11,43 @@ public enum PlayerDirection
 
 public class PlayerMovement : MonoBehaviour
 {
+    PlayerInfo playerInfo;
+
     Transform player;
     Rigidbody2D rb;
     PlayerInteractionHandler intHandler;
 
-    public float playerSpeed = 5f;
     [SerializeField] Transform playerBody;
     [SerializeField] CameraMovement cam;
 
     [HideInInspector] public PlayerDirection walkDirection = PlayerDirection.none;
     [HideInInspector] public bool interacting;
+    [HideInInspector] public bool secondaryInteracting;
 
-
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        playerInfo = GetComponent<PlayerInfo>();
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Transform>();
         intHandler = GetComponent<PlayerInteractionHandler>();
+        intHandler.canMove = true;
     }
 
     void Update()
     {
+        if (!intHandler.canMove)
+            return;
+
         PlayerInputCheck();
         MovePlayer();
-        PlayerInteraction();
+
+        if (interacting)
+            PlayerInteraction();
+        else if (secondaryInteracting)
+            SecondaryPlayerInteraction();
     }
 
     void PlayerInputCheck()
@@ -49,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         {
             walkDirection = PlayerDirection.right;
         }
-
+        
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
         {
             if (walkDirection == PlayerDirection.left)
@@ -60,23 +71,31 @@ public class PlayerMovement : MonoBehaviour
             if (walkDirection == PlayerDirection.right)
                 walkDirection = PlayerDirection.none;
         }
+        else if (walkDirection != PlayerDirection.none &&
+                !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) &&
+                !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+        {
+            walkDirection = PlayerDirection.none;
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
             interacting = true;
+        if (Input.GetKeyDown(KeyCode.F))
+            secondaryInteracting = true;
     }
 
     private void MovePlayer()
     {
         if (walkDirection == PlayerDirection.left)
         {
-            rb.velocity = Vector2.left * playerSpeed;
+            rb.velocity = Vector2.left * playerInfo.playerSpeed;
             playerBody.localRotation = Quaternion.Euler(0, 180, 0);
             cam.LerpCamera(walkDirection);
             cam.SetCooldownTimer();
         } //move player left
         else if (walkDirection == PlayerDirection.right)
         {
-            rb.velocity = Vector2.right * playerSpeed;
+            rb.velocity = Vector2.right * playerInfo.playerSpeed;
             playerBody.localRotation = Quaternion.identity;
             cam.LerpCamera(walkDirection);
             cam.SetCooldownTimer();
@@ -87,8 +106,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerInteraction()
     {
-        if (interacting && intHandler.isInteracting)
+        if (intHandler.isInteracting)
             intHandler.PlayerIsInteracting();
         interacting = false;
+    }
+    private void SecondaryPlayerInteraction()
+    {
+        if (intHandler.isInteracting)
+            intHandler.PlayerIsDoingTheOtherInteraction();
+        secondaryInteracting = false;
     }
 }
