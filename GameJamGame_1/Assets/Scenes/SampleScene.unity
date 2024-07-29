@@ -784,7 +784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiManager: {fileID: 485456938}
-  TotalTime: 3605
+  TotalTime: 300
   isCountingDown: 1
 --- !u!1 &1161284154
 GameObject:
