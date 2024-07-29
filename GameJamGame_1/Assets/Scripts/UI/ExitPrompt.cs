@@ -6,6 +6,7 @@ public class ExitPrompt : MonoBehaviour
 {
     [SerializeField] UIManager uiManager;
     [SerializeField] PlayerInteractionHandler interactionHandler;
+    [SerializeField] TimerSystem timerSystem;
 
     public void Stay()
     {
@@ -13,7 +14,7 @@ public class ExitPrompt : MonoBehaviour
 
         uiManager.ToggleUI();
 
-        //start Timer again
+        timerSystem.isCountingDown = true;
 
         interactionHandler.TogglePlayerInput();
     }

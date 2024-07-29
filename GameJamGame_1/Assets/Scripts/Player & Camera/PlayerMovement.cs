@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Transform>();
         intHandler = GetComponent<PlayerInteractionHandler>();
-        intHandler.canMove = true;
+        //intHandler.canMove = true;
     }
 
     void Update()

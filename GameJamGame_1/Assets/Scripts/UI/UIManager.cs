@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateWeight(float totalWeight, WeightLevel weightLevel)
     {
-        weightText.text = totalWeight.ToString();
+        weightText.text = totalWeight.ToString() + "Kg";
 
         switch(weightLevel)
         {
@@ -47,12 +47,31 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void UpdateTimer(int minutes, int seconds)
+    {
+        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        if (minutes < 1)
+        {
+            if (seconds % 2 != 0)
+                timeText.color = Color.red;
+            else
+                timeText.color = Color.white;
+        }
+    }
+    public void UpdateTimer(int hours, int minutes, int seconds)
+    {
+        timeText.text = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+    }
+
     public void ToggleUI()
     {
         if (moneyUI != null) //Toggle moneyUI
             moneyUI.gameObject.SetActive(!moneyUI.gameObject.activeSelf);
         if (weightUI != null) //Toggle weightUI
             weightUI.gameObject.SetActive(!weightUI.gameObject.activeSelf);
+        return;
+
         if (timeUI != null) //Toggle TimeUI
             timeUI.gameObject.SetActive(!timeUI.gameObject.activeSelf);
     }

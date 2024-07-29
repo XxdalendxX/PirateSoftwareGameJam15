@@ -9,6 +9,7 @@ public class Van : Interactible
 
     [SerializeField] UIManager uIManager;
     [SerializeField] WeightSystem weightSystem;
+    [SerializeField] TimerSystem timerSystem;
     [SerializeField] ExitPrompt exitPrompt;
 
 
@@ -21,7 +22,7 @@ public class Van : Interactible
     {
         uIManager.ToggleUI();
 
-        //Make Timer Stop
+        timerSystem.isCountingDown = false;
 
         interactionHandler.TogglePlayerInput();
 
