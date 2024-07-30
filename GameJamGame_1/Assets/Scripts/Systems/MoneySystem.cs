@@ -9,4 +9,6 @@ public class MoneySystem : MonoBehaviour
     int currencyTotal = 0;
 
     public void IncreaseCurrency(int itemPrice) => uiManager.UpdateMoney(currencyTotal += itemPrice);
+
+    public int GetTotalMoney() { return currencyTotal; }
 }

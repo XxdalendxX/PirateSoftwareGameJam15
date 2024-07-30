@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TimerSystem : MonoBehaviour
 {
+    [SerializeField] GameOverMenu gameOverMenu;
     [SerializeField] UIManager uiManager;
     [SerializeField, Tooltip("Time in seconds")] float TotalTime;
     float remainingTime;
@@ -17,12 +18,16 @@ public class TimerSystem : MonoBehaviour
 
     void Update()
     {
-        if (isCountingDown && remainingTime > 0)
+        if (isCountingDown)
         {
             if (remainingTime > 0)
                 CountDownTimer();
             else if (remainingTime < 0)
+            {
                 remainingTime = 0;
+                gameOverMenu.OpenMenu();
+                return;
+            }
 
             int hours = Mathf.FloorToInt(remainingTime / 3600) % 24;
             int minutes = Mathf.FloorToInt(remainingTime / 60) % 60;
@@ -39,4 +44,6 @@ public class TimerSystem : MonoBehaviour
     {
         remainingTime -= Time.deltaTime;
     }
+
+    public float GetTimeRemaining() { return remainingTime; }
 }

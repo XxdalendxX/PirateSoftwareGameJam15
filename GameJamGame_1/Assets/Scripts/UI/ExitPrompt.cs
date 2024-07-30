@@ -7,6 +7,7 @@ public class ExitPrompt : MonoBehaviour
     [SerializeField] UIManager uiManager;
     [SerializeField] PlayerInteractionHandler interactionHandler;
     [SerializeField] TimerSystem timerSystem;
+    [SerializeField] GameWinMenu gameWinMenu;
 
     public void Stay()
     {
@@ -22,7 +23,8 @@ public class ExitPrompt : MonoBehaviour
     public void Leave()
     {
         Debug.Log("You're leaving now good job");
-        //exit to main menu or summary canvas or whatever
+        gameWinMenu.OpenMenu();
+        gameObject.SetActive(false);
     }
 
 

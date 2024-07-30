@@ -33,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Transform>();
         intHandler = GetComponent<PlayerInteractionHandler>();
-        //intHandler.canMove = true;
     }
 
     void Update()
@@ -82,6 +81,9 @@ public class PlayerMovement : MonoBehaviour
             interacting = true;
         if (Input.GetKeyDown(KeyCode.F))
             secondaryInteracting = true;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            intHandler.PauseTheGame();
     }
 
     private void MovePlayer()

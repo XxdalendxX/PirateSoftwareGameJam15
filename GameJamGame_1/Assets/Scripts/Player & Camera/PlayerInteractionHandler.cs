@@ -7,8 +7,10 @@ public class PlayerInteractionHandler : MonoBehaviour
     [HideInInspector] public bool isInteracting = false;
     [HideInInspector] public Interactible interactingObject;
 
-    //[HideInInspector] 
-    public bool canMove = true;
+    [HideInInspector] public bool canMove = true;
+    [HideInInspector] public bool pausing = false;
+
+    [SerializeField] PauseMenuScript pauseMenu;
 
     public void EnterInteraction(Interactible object_)
     {
@@ -43,6 +45,11 @@ public class PlayerInteractionHandler : MonoBehaviour
             canMove = false;
         else
             canMove = true;
+    }
+
+    public void PauseTheGame()
+    {
+        pauseMenu.OpenMenu();
     }
 
 }
