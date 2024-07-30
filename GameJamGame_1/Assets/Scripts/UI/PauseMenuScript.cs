@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class PauseMenuScript : MonoBehaviour
 
     public void YouAreLeaving()
     {
-        Debug.Log("Fuck you, get outta here");
+        SceneManager.LoadScene(0);
     }
 
     public void YouAreNotLeaving()
