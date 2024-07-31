@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5531038030598094362}
   - component: {fileID: 7368512037189268933}
-  - component: {fileID: 4488404410215593146}
   - component: {fileID: 9162371269119043684}
+  - component: {fileID: 4488404410215593146}
   m_Layer: 0
   m_Name: Milk
   m_TagString: Untagged
@@ -86,21 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4488404410215593146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7014188001823892278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13566ba185f02404c911c08d37ddfbfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionPrompt: {fileID: 8953450304365927818, guid: beb64b508fd85fa428de2fd768acb951, type: 3}
-  moneyValue: 50
-  weight: 20
 --- !u!61 &9162371269119043684
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,3 +112,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.55, y: 3.07}
   m_EdgeRadius: 0
+--- !u!114 &4488404410215593146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014188001823892278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13566ba185f02404c911c08d37ddfbfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrompt: {fileID: 8953450304365927818, guid: beb64b508fd85fa428de2fd768acb951, type: 3}
+  moneyValue: 15
+  weight: 10

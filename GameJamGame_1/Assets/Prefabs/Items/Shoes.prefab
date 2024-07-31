@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4007664257700606715}
   - component: {fileID: 6672555307592839066}
-  - component: {fileID: 5964328318173883464}
   - component: {fileID: 6443354604910025559}
+  - component: {fileID: 5964328318173883464}
   m_Layer: 0
   m_Name: Shoes
   m_TagString: Untagged
@@ -86,21 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5964328318173883464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3906927662283824772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13566ba185f02404c911c08d37ddfbfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionPrompt: {fileID: 8953450304365927818, guid: beb64b508fd85fa428de2fd768acb951, type: 3}
-  moneyValue: 20
-  weight: 10
 --- !u!61 &6443354604910025559
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -111,7 +96,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -125,5 +110,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 1.13}
+  m_Size: {x: 3.04, y: 3.08}
   m_EdgeRadius: 0
+--- !u!114 &5964328318173883464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3906927662283824772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13566ba185f02404c911c08d37ddfbfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrompt: {fileID: 8953450304365927818, guid: beb64b508fd85fa428de2fd768acb951, type: 3}
+  moneyValue: 30
+  weight: 20

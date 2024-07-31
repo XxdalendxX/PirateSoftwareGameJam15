@@ -126,4 +126,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionPrompt: {fileID: 8953450304365927818, guid: beb64b508fd85fa428de2fd768acb951, type: 3}
   moneyValue: 40
-  weight: 20
+  weight: 30
