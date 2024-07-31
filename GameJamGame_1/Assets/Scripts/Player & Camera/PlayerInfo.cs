@@ -6,4 +6,5 @@ public class PlayerInfo : MonoBehaviour
 {
     public float playerWeight;
     public float playerSpeed;
+    public float maxWeight;
 }

@@ -21,6 +21,12 @@ public class Item : Interactible
 
     public override void InteractionAction()
     {
+        if (!weightSystem.CanCarry(weight))
+        {
+            StartCoroutine(interactionHandler.DisplayFullText());
+            return;
+        }
+
         weightSystem.IncreaseWeight(weight);
 
         moneySystem.IncreaseCurrency(moneyValue);

@@ -77,13 +77,16 @@ public class PlayerMovement : MonoBehaviour
             walkDirection = PlayerDirection.none;
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+            intHandler.PauseTheGame();
+
+        if (!intHandler.canInteract)
+            return;
+
         if (Input.GetKeyDown(KeyCode.E))
             interacting = true;
         if (Input.GetKeyDown(KeyCode.F))
             secondaryInteracting = true;
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            intHandler.PauseTheGame();
     }
 
     private void MovePlayer()

@@ -83,4 +83,12 @@ public class WeightSystem : MonoBehaviour
 
         uiManager.UpdateWeight(totalWeight, weightLevel);
     }
+
+    public bool CanCarry(float itemWeight)
+    {
+        if (totalWeight + itemWeight > playerInfo.maxWeight)
+            return false;
+        else
+            return true;
+    }
 }

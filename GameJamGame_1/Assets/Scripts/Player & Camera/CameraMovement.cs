@@ -17,6 +17,8 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] float camX;
     [SerializeField] float distanceToPlayer;
 
+    [SerializeField] float distYFromPlayer;
+
 
 
 
@@ -28,7 +30,7 @@ public class CameraMovement : MonoBehaviour
         if (awayFromPlayer)
             ResetTimerHandler();
 
-        transform.position = new Vector3(targetX + lerp, transform.position.y, transform.position.z);
+        transform.position = new Vector3(targetX + lerp, target.position.y + distYFromPlayer, transform.position.z);
     }
 
     public void LerpCamera(PlayerDirection direction)

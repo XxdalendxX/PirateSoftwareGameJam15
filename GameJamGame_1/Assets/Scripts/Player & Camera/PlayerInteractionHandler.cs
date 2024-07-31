@@ -8,9 +8,12 @@ public class PlayerInteractionHandler : MonoBehaviour
     [HideInInspector] public Interactible interactingObject;
 
     [HideInInspector] public bool canMove = true;
+    [HideInInspector] public bool canInteract = true;
     [HideInInspector] public bool pausing = false;
 
     [SerializeField] PauseMenuScript pauseMenu;
+    [SerializeField] Transform fullPromptObject;
+    [SerializeField] float fullPromptDisplayTime;
 
     public void EnterInteraction(Interactible object_)
     {
@@ -50,6 +53,17 @@ public class PlayerInteractionHandler : MonoBehaviour
     public void PauseTheGame()
     {
         pauseMenu.OpenMenu();
+    }
+
+    public IEnumerator DisplayFullText()
+    {
+        fullPromptObject.gameObject.SetActive(true);
+        canInteract = false;
+
+        yield return new WaitForSeconds(fullPromptDisplayTime);
+
+        canInteract = true;
+        fullPromptObject.gameObject.SetActive(false);
     }
 
 }
