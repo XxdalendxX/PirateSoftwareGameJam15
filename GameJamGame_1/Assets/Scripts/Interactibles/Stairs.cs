@@ -8,6 +8,6 @@ public class Stairs : Interactible
 
     public override void InteractionAction()
     {
-        interactionHandler.transform.position = ExitStairs.position;
+        interactionHandler.transform.position = new Vector3(ExitStairs.position.x, ExitStairs.position.y, ExitStairs.position.z -1.5f);
     }
 }
