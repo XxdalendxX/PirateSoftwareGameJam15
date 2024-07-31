@@ -2358,7 +2358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 1253969725}
   uiManager: {fileID: 485456938}
-  TotalTime: 300
+  TotalTime: 305
   isCountingDown: 1
 --- !u!1 &922562442
 GameObject:
